@@ -3,7 +3,8 @@ var router = express.Router();
 const passport = require('passport');
 const initializePassport = require('../config/passport-config');
 const flash = require('express-flash')
-const UserDao = require('../models/User')
+const UserDao = require('../models/User');
+const { getFeaturedPhotos } = require('../models/Entries');
 
 //initialize passport for the index route
 initializePassport(passport)
@@ -12,9 +13,14 @@ router.use(passport.session())
 router.use(flash())
 
 /* GET home page. */
-router.get('/', checkAuthenticated, function(req, res, next) {
-  res.send(`USER: ${req.user.firstname}`)
+router.get('/', isAuthenticated, async function(req, res) {
+  let entries = await getFeaturedPhotos()
+  res.render('index', {entries: entries});
 });
+
+router.get('/home', checkNotAuthenticated, (req, res)=>{
+  res.render('indexsigned.ejs')
+})
 
 router.get('/login', checkNotAuthenticated, (req, res) =>{
   res.render('login')
@@ -66,11 +72,12 @@ router.post('/add-user',async (req, res) =>{
 
 //middleware to check if user is  authenticated
 //FOR: LOGIN OR SIGNUP OR ANY VISITOR PAGE ROUTE
-function checkAuthenticated(req, res, next){
+function isAuthenticated(req, res, next){
  if(req.isAuthenticated()){
-  return next()
+    return res.redirect('/home');
  }
- res.redirect('/login')
+ next()
+
 }
 
 //middleware to check if user is not authenticated
