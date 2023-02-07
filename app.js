@@ -16,7 +16,7 @@ const entriesRouter = require('./routes/entries')
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views/pages'));
 app.set('view engine', 'ejs');
 
 const oneDay = 1000 * 60 * 60 * 24;

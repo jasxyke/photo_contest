@@ -1,0 +1,32 @@
+ <!--CARD 1-->
+ <div class="card-1">
+    <div class="left-card" style="
+        background-image: url(../assets/featsample_01.jpg);
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;">
+    </div>
+    <div class="right-card">
+        <div class="card-container">
+            <div class="card-head">
+                <h1 class="post-title"><%= entry.title %> </h1>
+                <div class="card-head-right">
+                    <span class="material-symbols-outlined"> military_tech</span>
+                    <h4 class="post-rank">RANK <%= rank %> </h4>
+                </div>
+            </div>
+            <div class="user-container">
+                <span class="material-symbols-outlined">person</span>
+                <h4 class="post-username">@<%= entry.username %> </h4>
+            </div>
+            <p class="post-desc"><%= entry.caption>/p>
+        </div>
+        <div class="card-footer">
+            <button class="btn-like" style="cursor: pointer;">Like Photo</button>
+            <div class="count-container">
+                <span class="material-symbols-outlined">thumb_up</span>
+                <h3 class="like-counter">320</h3>
+            </div>
+        </div>
+    </div>
+</div>
