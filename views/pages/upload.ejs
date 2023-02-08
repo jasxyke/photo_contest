@@ -4,15 +4,7 @@
     <%- include('../partials/head', {title: 'Upload your entry'});%> 
 </head>
 <body>
-        <!--NAVIGATION BAR-->
-    <nav>
-        <div class="nav-container">
-             <div class="nav-left">
-                    <img src="../assets/pet_logo.jpg" alt="">
-                    <a href="/"><h1>Petro</h1></a>
-              </div>
-        </div>
-
+        <%- include('../partials/logo-nav'); %> 
         <!--UPLOAD FORM-->
         <div class="upload-wrapper">
             <section class="signup-form">
@@ -32,7 +24,7 @@
                         </div>
                         <div class="field">
                             <textarea minlenght="100" maxlength="350" 
-                            name="" id="" cols="30" rows="7" placeholder="Short description must be min of 100 and max 350 characters." required></textarea>
+                            name="" id="" cols="30" rows="7" placeholder="Description must be min of 100 and max 350 characters." required></textarea>
                         </div>
                         <div class="button">
                             <input type="submit" value="POST">

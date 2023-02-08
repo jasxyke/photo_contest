@@ -2,14 +2,14 @@
     <div class="nav-container">
          <div class="nav-left">
                 <img src="../assets/pet_logo.jpg" alt="">
-                <a href="../src/index.html"><h1>Petro</h1></a>
+                <a href="/"><h1>Petro</h1></a>
           </div>
-         <div class="nav-right">
+         <div id="home"class="nav-right">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Leaderboards</a></li>
-                <li><a href="#">Entries</a></li>
-                <li><a id="login" href="/login">Login</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/leaderboards">Leaderboards</a></li>
+                <li><a href="/photo-entries">Entries</a></li>
+                <li><a id="login" href="/<%= signedIn.path %> "><%= signedIn.label %> </a></li>
             </ul>
          </div>
     </div>
@@ -20,7 +20,7 @@
            their lovable pets by posting their photos.
         </p>
         <div class="btn-upload">
-            <a href="/entries/upload"><button type="button" style="cursor: pointer;">Upload Now!</button></a>
+            <a href="/entries/upload"><button class="btn-home-up" type="button" style="cursor: pointer;">Upload Now!</button></a>
         </div>
      </div>
    </nav>
