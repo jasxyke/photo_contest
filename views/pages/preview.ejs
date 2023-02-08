@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %> 
+</head>
+<body>
+    <div class="prev-container">
+        <%- include('../partials/base-nav', {signedIn: signedIn}); %> 
+        <!--PREVIEW IMAGE-->
+
+        <div class="prev-card">
+            <div class="left-prev">
+                <a href="../../public/assets/featsample_01.jpg" target="_blank">
+                    <img src="../../public/assets/featsample_01.jpg" alt="" 
+                    style="width: 500px; 
+                           height: 500px;
+                           border-radius: 5px;">
+                </a>
+            </div>
+            <div class="right-prev">
+                <div class="top-section">
+                    <div class="top-1">
+                        <h1>TITLE HERE</h1>
+                        <div class="top-1-right">
+                            <span class="material-symbols-outlined"> military_tech</span>
+                            <h4>RANK 03</h4>
+                        </div>
+                    </div>
+                    <div class="top-2">
+                        <span class="material-symbols-outlined">person</span>
+                        <h3>@Username</h3>
+                    </div>
+                </div>
+                <div class="content-section">This is my pet dog loki his is my pet dog lok his is my pet dog lok his is my pet dog lok 
+                    his is my pet dog lok his is my pet dog lok his is my pet dog lok
+                    his is my pet dog lok his is my pet dog lok his is my pet dog lok
+                    his is my pet dog lok his is my pet dog lok his is my pet dog lok
+                    <p></p>
+                </div>
+                <div class="bot-section">
+                    <button type="button" class="prev-like" style="cursor: pointer;">
+                        <span class="material-symbols-outlined">thumb_up</span>
+                    </button>
+                    <p>320</p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</body>
+</html>

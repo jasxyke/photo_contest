@@ -22,6 +22,10 @@ router.get('/leaderboards', (req, res)=>{
   res.send(getLeaderboards())
 })
 
+router.get('/upload', (req, res)=>{
+  res.render('upload')
+})
+
 router.post('/add-entry', upload.single('photo'), async (req, res) =>{
   try{
     var entry = {
@@ -33,11 +37,11 @@ router.post('/add-entry', upload.single('photo'), async (req, res) =>{
     //check if the directory already exists for the current user with id
     service.checkDirectory(req.user.id || 1)
     //get the designated file path for the entry
-    service.getFilePath(req.user.id, req.photo.filename)
+    var relPath = service.getFilePath(req.user.id, req.photo.filename)
     const oldPath =  path.join(__dirname, '..', req.photo.path);
     var photoSaved = await service.savePhoto(oldPath,newPath)
     if(photoSaved){
-      entry.filePath = newPath;
+      entry.filePath = relPath;
       var result = await createEntry(entry)
     }else{throw {msg:'Error saving photo'}}
     res.send(result.message)

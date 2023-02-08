@@ -13,14 +13,10 @@ router.use(passport.session())
 router.use(flash())
 
 /* GET home page. */
-router.get('/', isAuthenticated, async function(req, res) {
+router.get('/', checkAuthenticated, async function(req, res) {
   let entries = await getFeaturedPhotos()
-  res.render('index', {entries: entries});
+  res.render('index', {entries: entries, signedIn: req.signedIn});
 });
-
-router.get('/home', checkNotAuthenticated, (req, res)=>{
-  res.render('indexsigned.ejs')
-})
 
 router.get('/login', checkNotAuthenticated, (req, res) =>{
   res.render('login')
@@ -28,6 +24,14 @@ router.get('/login', checkNotAuthenticated, (req, res) =>{
 
 router.get('/sign-up', checkNotAuthenticated, (req, res) =>{
   res.render('sign-up')
+})
+
+router.get('/photo-entries', checkAuthenticated, (req, res)=>{
+  res.render('entry', {signedIn: req.signedIn})
+})
+
+router.get('/leaderboards', checkAuthenticated, (req, res)=>{
+  res.render('leaderboards', {signedIn: req.signedIn})
 })
 
 router.post('/auth', passport.authenticate('local', {
@@ -72,12 +76,19 @@ router.post('/add-user',async (req, res) =>{
 
 //middleware to check if user is  authenticated
 //FOR: LOGIN OR SIGNUP OR ANY VISITOR PAGE ROUTE
-function isAuthenticated(req, res, next){
- if(req.isAuthenticated()){
-    return res.redirect('/home');
- }
- next()
-
+function checkAuthenticated(req, res, next){
+  if(req.isAuthenticated()){
+    req.signedIn = {
+      label: 'Logout',
+      path: 'logout'
+    }
+  }else{
+    req.signedIn = {
+      label: 'Login',
+      path: 'login'
+    }
+  }
+  next()
 }
 
 //middleware to check if user is not authenticated
