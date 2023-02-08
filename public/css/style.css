@@ -7,6 +7,9 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+body{
+    width: 100%;
+}
 /*NAVIGATION BAR*/
 nav{
     top: 0;
@@ -17,6 +20,18 @@ nav{
     background-size: cover;
     background-color: #A97D59;
 }
+                /*NAVBAR FOR ENTRY PAGE*/
+.nav-custom{
+    top: 0;
+    position: sticky;
+    z-index: 999;
+    background-color: #A97D59;
+    box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(119, 8, 76, 0.19);
+}
+.nav-left .custom{
+    color: #7e532f;
+}
+                /*====================*/
 .nav-container{
     display: flex;
     padding: 10px;
@@ -69,7 +84,7 @@ nav{
     text-decoration: none;
 }
 .nav-right li a:hover{
-    background-color: #A97D59;
+    background-color: #b47f53;
     border-radius: 25px;
     box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(119, 8, 76, 0.19);
     transition: 0.6s;
@@ -110,7 +125,7 @@ nav{
 .title button:hover{
     background-color: #A97D59;
 }
-button{
+.btn-home-up, .btn-like{
     padding: 0.5rem 1rem 0.5rem 1rem;
     font-size: 1rem;
     font-weight: bold;
@@ -145,7 +160,10 @@ header{
     color: antiquewhite;
     padding-right: 20px;
 }
-.material-symbols-outlined{
+.head-right a:hover{
+    color: rgb(255, 153, 0);
+}
+.head-right .material-symbols-outlined{
     padding-left: 10px;
     color: #38241A;
 }
@@ -202,6 +220,7 @@ header{
 }
 .post-title{
     font-family: 'Poppins', serif;
+    font-size: 25px;
     color: #A97D59;
 }
 .card-head-right{
@@ -234,8 +253,9 @@ header{
     padding: 0 30px 0 15px;
 }
 .post-desc{
-    padding:10px 15px 0 15px;
-    height: 300px;
+    text-align: justify;
+    padding:10px 30px 0 15px;
+    height: 200px;
 }
 
 
@@ -247,6 +267,7 @@ footer{
     margin-top: 7rem;
     height: 150px;
     background-color: #b47f53;
+    width: 100%;
 }
 .left-foot{
     margin-left:4rem;
@@ -286,7 +307,7 @@ footer{
 
 .login-wrapper{
     margin-top: 65px;
-    margin-left: 500px;
+    margin-left: 450px;
     width: 450px;
     background: #f6f6f6;
     border-radius: 15px;
@@ -360,6 +381,9 @@ footer{
     justify-content: center;
     font-weight: 400px;
 }
+.signup-form .link a{
+    text-decoration: none;
+}
 .signup-form .link a:hover{
     color: rgb(255, 153, 0);
     text-decoration: underline;
@@ -393,11 +417,15 @@ textarea{
     height: 100vh;
 }
 .filter{
+    position: sticky;
+    z-index: 999;
+    top: 80px;
     padding-top: 15px;
     padding-bottom: 2px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: white;
     border-bottom: 1px solid rgb(202, 201, 201);
 }
 .filter ul{ 
@@ -420,7 +448,11 @@ textarea{
     border-bottom: 3px solid #A97D59;
 }
 .lead-title{
+    position: sticky;
+    z-index: 999;
+    top: 123px;
     padding-top: 20px;
+    background-color: white;
     border-bottom: 1px solid rgb(202, 201, 201);
 }
 .lead-title h2{
@@ -432,27 +464,173 @@ textarea{
     padding-bottom: 0;
 }
 table{
-    border-collapse: collapse;
     width: 100%;
 }
-td, th {
-    border: none;
-    text-align: left;
-    padding: 8px;
+td, th{
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid rgb(202, 201, 201);
+    font-weight: 600;
 }
-.rank-th{
-    display: flex;
-    align-items: center;
-    gap: 3px;
+.rank-th, .rank-spot{
+    text-align: center;
 }
 .rank-th .material-symbols-outlined{
-    font-size: 20px;
+    font-size: 19px;
 }
-.rank-spot{
-    display: flex;
-    align-items: center;
-    gap: 3px;
+.rank-spot a, .rank-user a, .rank-img a{
+    text-decoration: none;
+    color: #7e532f;
 }
 .rank-spot .material-symbols-outlined{
-    font-size: 20px;
+    font-size: 19px;
+    color: goldenrod;
+    font-weight: 800;
 }
+
+        /*ENTRY PAGE*/
+
+.gallery{
+    margin: 20px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(119, 8, 76, 0.19);
+}
+.gallery a{
+    text-decoration: none;
+}
+.gallery h3{
+    color: #7e532f;
+    font-weight: 600;
+    text-align: center;
+}
+.gallery p{
+    text-align: center;
+}
+.gallery:hover {
+    border: 1px solid #777;
+}
+.gallery img {
+    width: 100%;
+    height: 300px;
+}
+.desc {
+    padding: 10px 20px;
+    text-align: justify;
+    overflow: hidden;
+    height: 200px;
+    line-height: 1.3em;
+    width: 400px;
+}
+.btn-entries{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    border-top: 1px solid rgb(202, 201, 201);
+    
+}
+.btn-container{
+    display: flex;
+    align-items: center;
+    padding-right: 30px;
+}
+.btn-entries .material-symbols-outlined{
+    padding-top: 2px;
+    padding-right: 4px;
+    color: darkcyan;
+}
+.btn-entries .entry-like{
+    background-color: transparent;
+    border-style: none;
+}
+.btn-entries p{
+    font-weight: 600;
+    color: #38241A;
+}
+.btn-entries h4{
+    color: blue;
+}
+
+            /*PREVIEW GALLERY PAGE*/
+.prev-container{
+    height: 100vh;
+}
+.prev-card{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(119, 8, 76, 0.19);
+    height:520px;
+    width: 1000px;
+    margin: 20px 150px;
+    padding: 10px;
+}
+.left-prev, .right-prev{
+    width: 500px;
+    height: 100%;
+}
+.right-prev{
+    padding: 10px;
+}
+.top-1, .top-1-right{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+.top-1 h1{
+    font-size: 25px;
+    color: #7e532f;
+}
+.top-1-right .material-symbols-outlined{
+    color: goldenrod;
+    font-size: 30px;
+}
+.top-1-right{
+    color: goldenrod;
+}
+.top-2{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgb(202, 201, 201);
+}
+.top-2 .material-symbols-outlined{
+    color: darkcyan;
+}
+.top-2 h3{
+    color: darkcyan;
+    font-size: 15px;
+}
+.content-section{
+    height: 350px;
+    padding: 15px;
+    text-align: justify;
+    text-indent: 40px;
+    border-bottom: 1px solid rgb(202, 201, 201);
+}
+.bot-section{
+    padding: 10px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+.prev-like{
+    border-style: none;
+    padding-right: 10px;
+    background-color: transparent;
+    font-size: 30px;
+    color: darkcyan;
+}
+.bot-section p{
+    color: #38241A;
+    font-weight: 700;
+    font-size: 20px;
+    padding-right: 20px;
+}
+
+
+
