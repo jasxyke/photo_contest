@@ -18,8 +18,7 @@ class EntryService{
     static getFilePath(user, filename){
         var today = new Date()
         var relPath = `entries/${today.getFullYear}/${getMonthName(today.getMonth())}/${user.id}/${filename}`
-        var newPath = path.join(__dirname, '..', relPath)
-        return newPath
+        return relPath
     }
 
 

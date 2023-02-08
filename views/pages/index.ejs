@@ -20,9 +20,9 @@
    <div class="featured-con">
     <!--CARD SECTION-->
     <% if(entries){ %>
-        <%= entries.forEach(entry => {
+        <% entries.forEach(entry => { %>
                 <%- include('/featured-card', {entry: entry})%>
-        }); }%>  
+    <%    }); }%>  
    </div>
 
    <!--FOOTER-->

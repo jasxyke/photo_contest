@@ -1,24 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signing-Up</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <!--GOOGLE ICONS-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <%- include('../partials/head', {title: 'PETRO | Sign up'})  %> 
 </head>
 <body>
 
-        <!--NAVIGATION BAR-->
-    <nav>
-        <div class="nav-container">
-             <div class="nav-left">
-                    <img src="../assets/pet_logo.jpg" alt="">
-                    <a href="../src/index.html"><h1>Petro</h1></a>
-              </div>
-        </div>
+    <%- include('../partials/logo-nav'); %> 
 
         <!--SIGNUP FORM-->
         <div class="wrapper">
@@ -26,9 +13,8 @@
                 <div class="title">
                     <h3>SIGN UP</h3>
                 </div>
-
                 <!--DETAIL FIELDS-->
-                <form action="#">
+                <form action="/add-user" method="post">
                     <div class="name-details">
                         <div class="field">
                             <label>First Name</label>
