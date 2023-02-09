@@ -22,23 +22,24 @@ module.exports = class StudentValidator{
     }
     */
 
-    static validateUsername(username){
+    static validateUsername(username, min=6, max=20){
         username = this.validate(username, 'username');
         if(!validator.isAlphanumeric(username)) {
             throw 'Username can only contain letters, numbers, and the _ character';
         }
-        if(username.length < 6){
-            throw 'Username must contain atleast 6 characters';
+        if(username.length < min){
+            throw `Username must contain atleast ${min} characters`;
         }
-        if(username.length > 20){
-            throw 'Username must contain a maximum of 20 characters';
+        if(username.length > max){
+            throw `Username must contain a maximum of ${max} characters`;
         }
         return username;
     }
 
-    static validatePassword(password, confirm_pass){
+    static validatePassword(password, confirm_pass=null){
         password = this.validate(password, "password");
         if(!validator.isStrongPassword(password, {minUppercase: 0, minSymbols: 0})) throw 'Password is weak';
+        if(confirm_pass === null) return password;
         if(password !== confirm_pass) throw 'Passwords do not match';
         return password;
     }
@@ -68,6 +69,5 @@ module.exports = class StudentValidator{
         if(!courses.includes(course)) throw 'Course not in list';
         return course
     }
-
 
 }

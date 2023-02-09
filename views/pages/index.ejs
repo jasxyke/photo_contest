@@ -20,8 +20,8 @@
    <div class="featured-con">
     <!--CARD SECTION-->
     <% if(entries){ %>
-        <% entries.forEach(entry => { %>
-                <%- include('/featured-card', {entry: entry})%>
+        <% entries.forEach((entry, index) => { %>
+            <%- include('../partials/featured-card', {entry: entry, rank: index + 1}); %>
     <%    }); }%>  
    </div>
    <%- include('../partials/footer')  %> 

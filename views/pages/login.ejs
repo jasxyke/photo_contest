@@ -13,6 +13,9 @@
                 <div class="title">
                     <h3>LOGIN</h3>
                 </div>
+                <% if(messages.error){ %>
+                    <%- include('../partials/error-response', {error: messages.error}); %>
+               <% } %>
                 <!--FIELDS-->
                 <form action="/auth" method="post">
                     <div class="name-details">

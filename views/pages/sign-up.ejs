@@ -14,30 +14,40 @@
                     <h3>SIGN UP</h3>
                 </div>
                 <!--DETAIL FIELDS-->
+                <% if(messages.error){ %>
+                    <%- include('../partials/error-response', {error: messages.error}); %>
+               <% } %>
                 <form action="/add-user" method="post">
                     <div class="name-details">
                         <div class="field">
                             <label for="fistname">First Name</label>
-                            <input id="fistname" name="" type="text" placeholder="Enter your first name" required autofocus>
+                            <input id="firstname" name="firstname" type="text" 
+                            placeholder="Enter your first name" 
+                            required autofocus
+                            value="<%if(user){%><%=user.firstname%><%}%>">
                         </div>
                         <div class="field">
-                            <label>Last Name</label>
-                            <input type="text" placeholder="Enter your last name" required>
+                            <label for="lastname">Last Name</label>
+                            <input name="lastname" type="text"
+                            placeholder="Enter your last name" required
+                            value="<%if(user){%><%=user.lastname%><%}%>">
                         </div>
                         <div class="field">
-                            <label>Username</label>
-                            <input type="text" placeholder="maximum of 15 characters" required>
+                            <label for="username">Username</label>
+                            <input id="username" name="username" type="text" 
+                            placeholder="maximum of 15 characters" required
+                            value="<%if(user){%><%= user.username%><%}%>">
                         </div>
                         <div class="field">
-                            <label>Password</label>
-                            <input type="password" placeholder="Enter your password" required>
+                            <label for="password">Password</label>
+                            <input id="password" name="password" type="password" placeholder="Enter your password" required>
                         </div>
                         <div class="button">
                             <input type="submit" value="Sign Up">
                         </div>
                     </div>
                 </form>
-                    <div class="link"><p>Already Signed-in? <a href="../src/login.html">Login now</a></div>
+                    <div class="link"><p>Already Signed-in? <a href="/login">Login now</a></div>
                     <div class="credits">&#169; Petro2023</div>
             </section>
         </div>

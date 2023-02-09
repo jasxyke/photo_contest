@@ -2,10 +2,10 @@ var express = require('express');
 const { getFeaturedPhotos, createEntry, getLeaderboards} = require('../models/Entries');
 var router = express.Router();
 const multer = require('multer')
-const service = require('../services/EntryService')
+const Service = require('../services/EntryService')
 const {voteEntry, unVoteEntry} = require('../models/Votes')
-
-const upload = multer({dest: './entries'})
+const path = require('path')
+const upload = multer({dest: './public/entries'})
 
 //get featured entries
 router.get('/featured', async (req, res) =>{
@@ -22,30 +22,37 @@ router.get('/leaderboards', (req, res)=>{
   res.send(getLeaderboards())
 })
 
-router.get('/upload', (req, res)=>{
+router.get('/upload', authenticateFirst, (req, res)=>{
   res.render('upload')
 })
 
-router.post('/add-entry', upload.single('photo'), async (req, res) =>{
+router.post('/add-entry', authenticateFirst, upload.single('img'), async (req, res) =>{
   try{
     var entry = {
       title: req.body.title,
-      caption: req.body.caption,
+      caption: req.body.desc,
       filePath: '',
-      artist_id: req.user.id || 1
+      artist_id: req.user.id
     }
+    var service = new Service(req.user, req.file.originalname)
     //check if the directory already exists for the current user with id
-    service.checkDirectory(req.user.id || 1)
+    service.checkDirectory()
     //get the designated file path for the entry
-    var relPath = service.getFilePath(req.user.id, req.photo.filename)
-    const oldPath =  path.join(__dirname, '..', req.photo.path);
-    var photoSaved = await service.savePhoto(oldPath,newPath)
+    let oldPath =  path.join(__dirname, '..', req.file.path);
+    let imgDir = service.getImgDir();
+    const newPath = path.join(__dirname,'..', imgDir, req.file.originalname)
+    var photoSaved = await Service.savePhoto(oldPath,newPath)
+    console.log('PHOTO SAVED: ', photoSaved);
     if(photoSaved){
+      var relPath = service.getImgPath()
       entry.filePath = relPath;
       var result = await createEntry(entry)
+      console.log('Entry saved to database....');
     }else{throw {msg:'Error saving photo'}}
-    res.send(result.message)
+    //after redirect should indicate that the photo was successfully uploaded
+    res.redirect('/')
   }catch(e){
+    console.log(e);
     res.send(e)
   }
 })
@@ -80,6 +87,13 @@ function checkAuthenticated(req, res, next){
      return res.redirect('/')
    }
    next()
+ }
+
+ function authenticateFirst(req, res, next){
+  if(!req.isAuthenticated()){
+    return res.redirect('../login')
+  }
+  next()
  }
 
 module.exports = router;

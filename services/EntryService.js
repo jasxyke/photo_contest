@@ -4,20 +4,27 @@ const entries = require('../models/Entries')
 const path = require('path')
 
 class EntryService{
-    constructor(){}
-
-    static checkDirectory(user_id){
-        this.entry = entry;
+    constructor(user, filename){
         this.today = new Date();
-        var folder = `..entries/${today.getFullYear}/${getMonthName(today.getMonth())}/${user_id}`
+        this.user = user;
+        this.filename = filename;
+    }
+
+    checkDirectory(){
+        var folder = path.join(__dirname,'..',`public/entries/${this.today.getFullYear()}/${getMonthName(this.today.getMonth())}/${this.user.id}`)
         if (!fs.existsSync(folder)){
             fs.mkdirSync(folder, { recursive: true });
         }
     }
 
-    static getFilePath(user, filename){
-        var today = new Date()
-        var relPath = `entries/${today.getFullYear}/${getMonthName(today.getMonth())}/${user.id}/${filename}`
+    getImgDir(){
+        var imgDir = `public/entries/${this.today.getFullYear()}/${getMonthName(this.today.getMonth())}/${this.user.id}`
+        return imgDir
+    }
+
+    getImgPath(){
+        var relPath = `/entries/${this.today.getFullYear()}/${getMonthName(this.today.getMonth())}/${this.user.id}/${this.filename}`
+        console.log(relPath);
         return relPath
     }
 

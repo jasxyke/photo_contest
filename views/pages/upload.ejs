@@ -12,19 +12,19 @@
                     <h3>UPLOAD YOUR ENTRY</h3>
                 </div>
                 <!--ENTRY DESCRIPTION SECTION-->
-                <form action="entries/add-entry" method="post" enctype="multipart/form-data">
+                <form action="add-entry" method="post" enctype="multipart/form-data">
                     <!--IMAGE UPLOAD SECTION-->
                 <div class="img-upload">
-                    File name: <input class="btn-up" type="file" name="imgfile" accept=".png, .jpg, .jpeg" required>
+                    File name: <input class="btn-up" type="file" name="img" accept=".png, .jpg, .jpeg" required>
                 </div>
                     <div class="name-details">
                         <div class="field">
-                            <label>Title</label>
-                            <input type="text" placeholder="Enter your title here." required autofocus>
+                            <label for="title">Title</label>
+                            <input id="title" name="title" type="text" placeholder="Enter your title here." required autofocus>
                         </div>
                         <div class="field">
                             <textarea minlenght="100" maxlength="350" 
-                            name="" id="" cols="30" rows="7" placeholder="Description must be min of 100 and max 350 characters." required></textarea>
+                            name="desc" id="desc" cols="30" rows="7" placeholder="Description must be min of 100 and max 350 characters." required></textarea>
                         </div>
                         <div class="button">
                             <input type="submit" value="POST">

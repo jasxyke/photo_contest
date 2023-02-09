@@ -30,8 +30,7 @@ function createEntry(entry){
         const sql = "INSERT INTO entries(title, caption, file_path, artist_id) "+
                     "VALUES(?, ?, ?, ?)";
         const query = mysql.format(sql, 
-            [entry.title, entry.caption, entry.fielPath, artist_id])
-
+            [entry.title, entry.caption, entry.filePath, entry.artist_id])
         pool.query(query,(err, result)=>{
             if(err) {reject(err); return}
             resolve(result)

@@ -42,7 +42,7 @@ class User{
             
             crypt.hash(user.password, saltRounds, (err, hashedPass)=>{
                 if(err){
-                    reject(err)
+                    reject(err);
                 }else{
                     let query = mysql.format(sqlAdd, 
                         [user.username,
