@@ -37,7 +37,7 @@ router.get('/leaderboards', checkAuthenticated, async (req, res)=>{
 })
 
 //TODO: changes this to a post request in the future, for security reasons
-router.get('/logout', (req, res)=>{
+router.post('/logout', (req, res)=>{
   req.logout((err)=>{
     if(err){
       req.flash('logout-err', err)

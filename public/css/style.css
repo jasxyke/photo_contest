@@ -499,7 +499,9 @@ td, th{
 }
 
         /*ENTRY PAGE*/
-
+.gallery-contain{
+    min-height: calc(100vh - 150px)
+}
 .gallery{
     margin: 20px;
     border: 1px solid #ccc;
@@ -647,5 +649,54 @@ td, th{
     background-color: white;
 }
 
+.lb-month-btn{
+    border: none;
+    background-color: white;
+}
+
+    /* PROFILE SECTION */
+.profile-container{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding-top: 50px;
+   padding-bottom: 20px;
+   border-bottom-left-radius: 50px;
+   box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(119, 8, 76, 0.19);
+}
+.profile-details{
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    padding: 3px;
+    gap: 10px;
+    color: #7e532f;
+}
+.top-profile{
+    color:#38241A;
+}
+.top-profile .material-symbols-outlined{
+  border-radius: 50px;
+  font-size: 70px;
+  background-color: #A97D59;
+  color: #38241A;
+  margin-left: 36px;
+}
+.profile-content{
+    padding: 15px;
+    font-size: 18px;
+    border-bottom: 1px solid rgb(202, 201, 201);
+}
+.profile-bot{
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    gap: 6px;
+    padding: 10px;
+}
+.profile-bot .material-symbols-outlined{
+    color: #7e532f;
+    font-size: 23px;
+}
 
 
