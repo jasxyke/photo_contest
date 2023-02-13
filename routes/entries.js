@@ -1,25 +1,43 @@
 var express = require('express');
-const { getFeaturedPhotos, createEntry, getLeaderboards} = require('../models/Entries');
+const { getFeaturedPhotos, createEntry, getEntries} = require('../models/Entries');
+const { getLeaderboards } = require('../models/Leaderboards')
 var router = express.Router();
 const multer = require('multer')
+const flash = require('express-flash')
 const Service = require('../services/EntryService')
 const {voteEntry, unVoteEntry} = require('../models/Votes')
 const path = require('path')
 const upload = multer({dest: './public/entries'})
+const { handleError } = require('../services/ErrorHandler')
+
+//use flash
+router.use(flash())
+
+//get entries of the currennt month
+router.get('/:orderby', async (req, res)=>{
+  try{
+    res.send(await getEntries({orderBy: req.params.orderby}))
+  }catch(e){
+    handleError(req, res, e);
+  }
+});
 
 //get featured entries
 router.get('/featured', async (req, res) =>{
   try{
     res.send( await getFeaturedPhotos())
   }catch(err){
-    res.send(err)
+    handleError(req, res, e)
   }
 })
 
-router.get('/leaderboards', (req, res)=>{
-  //get leaderboards of entries by month and current year
-  //month is in numerical format
-  res.send(getLeaderboards())
+router.get('/leaderboards/:month', async (req, res)=>{
+  try{
+    res.send( await getLeaderboards(req.params.month))
+  }catch(e){
+    console.log(e);
+    //handleError(req, res, e)
+  }
 })
 
 router.get('/upload', authenticateFirst, (req, res)=>{

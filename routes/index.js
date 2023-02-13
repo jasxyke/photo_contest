@@ -4,7 +4,7 @@ const passport = require('passport');
 const initializePassport = require('../config/passport-config');
 const flash = require('express-flash')
 const UserDao = require('../models/User');
-const { getFeaturedPhotos } = require('../models/Entries');
+const { getFeaturedPhotos, getLeaderboards } = require('../models/Entries');
 const { checkAuthenticated, checkNotAuthenticated, validateSignUpForm} = require('../services/middlewares/authentication');
 const { handleError } = require('../services/ErrorHandler');
 
@@ -32,7 +32,7 @@ router.get('/photo-entries', checkAuthenticated, (req, res)=>{
   res.render('entry', {signedIn: req.signedIn})
 })
 
-router.get('/leaderboards', checkAuthenticated, (req, res)=>{
+router.get('/leaderboards', checkAuthenticated, async (req, res)=>{
   res.render('leaderboards', {signedIn: req.signedIn})
 })
 

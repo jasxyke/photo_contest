@@ -5,6 +5,18 @@ function getMonthName(numberMonth){
     return monthNames[numberMonth];
 }
 
+function getFirstDay(date){
+  var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+  return firstDay;
+}
+
+function getLastDay(date){
+  var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+  return lastDay;
+}
+
 module.exports = {
-    getMonthName
+    getMonthName,
+    getFirstDay,
+    getLastDay
 }
