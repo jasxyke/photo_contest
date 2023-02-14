@@ -5,12 +5,15 @@
 </head>
 <body>
        <%- include('../partials/base-nav', {signedIn, signedIn}); %> 
-       <div class="gallery-contain">
+       <div class="gallery-container">
         <div id="entries-container">
         </div>
-       </div>
-        
-                                    
+       </div>                        
         <%- include('../partials/footer'); %>    
+        <script src="/javascripts/entries-fetcher.js"></script>
+        <%- include('../partials/react-loader'); %>
+        <% if(user){ console.log('tite');%>
+            <%- include('../partials/btn-script'); %>
+            <% } %>
 </body>
 </html>

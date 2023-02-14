@@ -4,7 +4,7 @@ const passport = require('passport');
 const initializePassport = require('../config/passport-config');
 const flash = require('express-flash')
 const UserDao = require('../models/User');
-const { getFeaturedPhotos, getLeaderboards } = require('../models/Entries');
+const { getFeaturedPhotos, getLeaderboards, getLoggedFeaturedPhotos } = require('../models/Entries');
 const { checkAuthenticated, checkNotAuthenticated, validateSignUpForm} = require('../services/middlewares/authentication');
 const { handleError } = require('../services/ErrorHandler');
 
@@ -16,8 +16,19 @@ router.use(flash())
 
 /* GET home page. */
 router.get('/', checkAuthenticated, async function(req, res) {
-  let entries = await getFeaturedPhotos()
-  res.render('index', {entries: entries, signedIn: req.signedIn});
+  try{
+    if(req.isAuthenticated()){
+      var entries = await getFeaturedPhotos()
+    }else{
+      var entries = await getFeaturedPhotos()
+    }
+    res.render('index', {entries: entries, 
+      signedIn: req.signedIn,
+      user: req.user});
+  }catch(e){
+    res.send(e);
+  }
+  
 });
 
 router.get('/login', checkNotAuthenticated, (req, res) =>{
@@ -29,7 +40,7 @@ router.get('/sign-up', checkNotAuthenticated, (req, res) =>{
 })
 
 router.get('/photo-entries', checkAuthenticated, (req, res)=>{
-  res.render('entry', {signedIn: req.signedIn})
+  res.render('entry', {user: req.user,signedIn: req.signedIn})
 })
 
 router.get('/leaderboards', checkAuthenticated, async (req, res)=>{
@@ -37,7 +48,7 @@ router.get('/leaderboards', checkAuthenticated, async (req, res)=>{
 })
 
 //TODO: changes this to a post request in the future, for security reasons
-router.post('/logout', (req, res)=>{
+router.get('/logout', (req, res)=>{
   req.logout((err)=>{
     if(err){
       req.flash('logout-err', err)

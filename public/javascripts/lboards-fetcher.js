@@ -17,8 +17,8 @@ function renderLeaderboards(lBoards){
             let tableRow = `
         <tr>
             <td class="rank-spot"><span class="material-symbols-outlined">workspace_premium</span>Rank ${index+1}</td>
-            <td class="rank-user"><a href="/users/${entry.username}">${entry.firstname + entry.lastname}</a></td> 
-            <td class="rank-img"><a href="/entry/${entry.id}">${entry.title}</a></td>  
+            <td class="rank-user"><a href="/users/profile/${entry.username}">${entry.firstname + entry.lastname}</a></td> 
+            <td class="rank-img"><a href="/entries/view/${entry.id}">${entry.title}</a></td>  
             <td>${entry.likes}</td>
           </tr>`;
     
