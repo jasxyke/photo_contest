@@ -22,11 +22,14 @@
             <p class="post-desc"><%= entry.caption %></p>
         </div>
         <div class="card-footer">
-            <div class="btn-container"></div>
-            <!--<button class="btn-like" style="cursor: pointer;">Like Photo</button>-->
+            <div class="btn-container" name="<%= entry.id %>">
+                <button class="btn-like" style="cursor: pointer;" 
+                onclick='window.location.replace("http://localhost:300/login");'>Like Photo</button>
+            </div>
+        
             <div class="count-container">
                 <span class="material-symbols-outlined">thumb_up</span>
-                <h3 class="like-counter"><%= entry.likes %></h3>
+                <h3 class="like-counter" id="counter-<%= entry.id %>"><%= entry.likes %></h3>
             </div>
         </div>
     </div>

@@ -41,7 +41,6 @@ function validateSignUpForm(req, res, next){
         req.flash('error', e);
         var user = {
             username: req.body.username,
-            password: req.body.password,
             lastname: req.body.lastname,
             firstname: req.body.firstname
           }

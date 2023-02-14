@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('../partials/head'); %> 
+    <%- include('../partials/head', {title: 'Preview'}); %> 
 </head>
 <body>
     <div class="prev-container">
@@ -10,8 +10,8 @@
 
         <div class="prev-card">
             <div class="left-prev">
-                <a href="../../public/assets/featsample_01.jpg" target="_blank">
-                    <img src="../../public/assets/featsample_01.jpg" alt="" 
+                <a href="<%= entry.file_path %>" target="_blank">
+                    <img src="<%= entry.file_path %>" alt="" 
                     style="width: 500px; 
                            height: 500px;
                            border-radius: 5px;">
@@ -20,21 +20,17 @@
             <div class="right-prev">
                 <div class="top-section">
                     <div class="top-1">
-                        <h1>TITLE HERE</h1>
+                        <h1><%= entry.title %></h1>
                         <div class="top-1-right">
                             <span class="material-symbols-outlined"> military_tech</span>
-                            <h4>RANK 03</h4>
                         </div>
                     </div>
                     <div class="top-2">
                         <span class="material-symbols-outlined">person</span>
-                        <h3>@Username</h3>
+                        <h3>@<%= entry.username %></h3>
                     </div>
                 </div>
-                <div class="content-section">This is my pet dog loki his is my pet dog lok his is my pet dog lok his is my pet dog lok 
-                    his is my pet dog lok his is my pet dog lok his is my pet dog lok
-                    his is my pet dog lok his is my pet dog lok his is my pet dog lok
-                    his is my pet dog lok his is my pet dog lok his is my pet dog lok
+                <div class="content-section"><%= entry.caption %>
                     <p></p>
                 </div>
                 <div class="bot-section">

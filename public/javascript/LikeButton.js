@@ -1,5 +1,7 @@
 'use strict';
 
+import UnLikeButton from "./UnLikeButton";
+
 const e = React.createElement;
 
 class LikeButton extends React.Component{
@@ -10,7 +12,7 @@ class LikeButton extends React.Component{
 
     render(){
         if(this.state.liked){
-            return 'You voted this';
+            return e(UnLikeButton);
         }
         return e(
             'button',
@@ -20,4 +22,3 @@ class LikeButton extends React.Component{
     }
 }
 
-export default LikeButton;

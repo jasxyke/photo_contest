@@ -417,16 +417,18 @@ textarea{
     height: 100vh;
 }
 .filter{
+    /*
     position: sticky;
     z-index: 999;
     top: 80px;
-    padding-top: 15px;
+    */
+    padding-top: 3rem;
     padding-bottom: 2px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: white;
-    border-bottom: 1px solid rgb(202, 201, 201);
+    border-bottom: 1px solid rgb(202, 201, 201);;
 }
 .filter ul{ 
     display: flex;
@@ -448,9 +450,11 @@ textarea{
     border-bottom: 3px solid #A97D59;
 }
 .lead-title{
+    /*
     position: sticky;
     z-index: 999;
     top: 123px;
+    */
     padding-top: 20px;
     background-color: white;
     border-bottom: 1px solid rgb(202, 201, 201);
@@ -472,6 +476,12 @@ td, th{
     border-bottom: 1px solid rgb(202, 201, 201);
     font-weight: 600;
 }
+
+
+.tb-header{
+    text-align: center;
+}
+
 .rank-th, .rank-spot{
     text-align: center;
 }
@@ -632,6 +642,16 @@ td, th{
     font-weight: 700;
     font-size: 20px;
     padding-right: 20px;
+}
+
+.lb-month-btn{
+    border: none;
+    background-color: white;
+}
+
+.lb-month-btn{
+    border: none;
+    background-color: white;
 }
 
     /* PROFILE SECTION */
