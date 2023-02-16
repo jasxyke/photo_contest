@@ -81,7 +81,7 @@ router.post('/add-user', validateSignUpForm, async (req, res) =>{
             return;
           }
           console.log('user logged in');
-          return res.send(req.user.username)
+          res.redirect('/')
           //TODO: 
         })
       }
